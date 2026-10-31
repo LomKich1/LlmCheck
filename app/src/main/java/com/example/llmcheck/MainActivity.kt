@@ -104,7 +104,7 @@ class MainActivity : Activity() {
     // Прокси декодирования: поток весов через умножение-накопление (память + вычисления), 4 потока.
     private fun benchBandwidth(): Double {
         val n = 4; val rows = 12288; val cols = 4096          // ~48 МБ на поток
-        val w = List(n) { ByteArray(rows * cols).also { java.util.Random(it.toLong()).nextBytes(it) } }
+        val w = List(n) { ByteArray(rows * cols).also { arr -> java.util.Random(1L).nextBytes(arr) } }
         val x = ByteArray(cols) { (it and 7).toByte() }
         val passes = 3
         val t0 = System.nanoTime()
